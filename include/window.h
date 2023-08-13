@@ -9,6 +9,7 @@
 
 #include <vector>
 
+#include "icontext.h"
 
 namespace Ui
 {
@@ -23,11 +24,11 @@ public:
     virtual ~Window();
 
 signals:
-	void MakeItemSignal();
 
 public slots:
-	void MakeItem(QListWidget* list_widget);
-	void MakeItemSlot();
+	void MakeItem(QListWidget* list_widget, IContext *context);
+	void MakeNewTopic();
+	void MakeNewLesson();
 	void onBtnClicked();
 private:
 

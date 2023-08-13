@@ -9,6 +9,7 @@
 
 #include <iostream>
 #include "topic.h"
+#include "lesson_context.h"
 
 Window::Window(QMainWindow *parent, QString path) : 
     QMainWindow(parent),
@@ -16,28 +17,36 @@ Window::Window(QMainWindow *parent, QString path) :
 {
     ui->setupUi(this);
 
-	connect(ui->_button, &QPushButton::clicked, this, &Window::MakeItemSlot);
+	connect(ui->_button_topic_create, &QPushButton::clicked, this, &Window::MakeNewTopic);
+	connect(ui->_button_lesson_create, &QPushButton::clicked, this, &Window::MakeNewLesson);
 
     this->resize(800, 600);
 
 }
 
-void Window::MakeItemSlot()
-{
-	MakeItem(ui->_list);
-}
-
-void Window::MakeItem( QListWidget* list_widget ) 
+void Window::MakeNewTopic()
 {
 	Topic *widget = new Topic(this, 0);
 
+	MakeItem(ui->_list, widget);
+}
+
+void Window::MakeNewLesson()
+{
+	LessonContext *widget = new LessonContext(this, 0);
+
+	MakeItem(ui->_list, widget);
+}
+
+void Window::MakeItem( QListWidget* list_widget, IContext *context ) 
+{
     QListWidgetItem* item = new QListWidgetItem();
-    item->setSizeHint( widget->sizeHint() );
+    item->setSizeHint( context->sizeHint() );
 
 	int row = list_widget->row(list_widget->selectedItems().last());
 	list_widget->insertItem(row + 1, item);
 
-    list_widget->setItemWidget( item, widget );
+    list_widget->setItemWidget( item, context );
 }
 
 Window::~Window()

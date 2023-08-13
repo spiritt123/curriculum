@@ -4,25 +4,25 @@
 
 #include <QWidget>
 #include <QLabel>
-#include <QLineEdit>
+#include <QTextEdit>
 
 
-class Topic : public IContext
+class LessonContext : public IContext
 {
 	Q_OBJECT
 public:
-	explicit Topic(QWidget *parent, quint32 number);
-	~Topic();
+	explicit LessonContext(QWidget *parent, quint32 number);
+	~LessonContext();
 
 	quint32 getNumber() { return _number; }
-	QString getTopicName() { return _edit->text(); }
+	QString getLessonContextName() { return _edit->toPlainText(); }
 
 	void updateNumber(quint32 number);
 
 private:
 	QLabel    *_label_string;
 	QLabel    *_enumerate;
-	QLineEdit *_edit;
+	QTextEdit *_edit;
 
 	quint32   _number;
 };

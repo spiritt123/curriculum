@@ -6,7 +6,7 @@
 //#include <QPushButton>
 
 Topic::Topic(QWidget *parent, quint32 number)
-	: IContex(parent)
+	: IContext(parent)
 	, _number(number)
 {
     QLayout* layout = new QHBoxLayout();
