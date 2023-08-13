@@ -4,6 +4,7 @@
 #include <QString>
 #include <QFile>
 #include <QTextStream>
+#include <QListWidget>
 
 #include <vector>
 
@@ -20,8 +21,12 @@ public:
     explicit Window(QMainWindow *parent = 0, QString path = "./settings.txt");
     virtual ~Window();
 
-public slots:
+signals:
+	void MakeItemSignal();
 
+public slots:
+	void MakeItemSlot();
+	void MakeItem( QListWidget* lstWgt );
 private:
 
     Ui::Window *ui;
