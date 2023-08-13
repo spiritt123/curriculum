@@ -5,6 +5,7 @@
 #include <QFile>
 #include <QTextStream>
 #include <QListWidget>
+#include <QMessageBox>
 
 #include <vector>
 
@@ -25,8 +26,9 @@ signals:
 	void MakeItemSignal();
 
 public slots:
+	void MakeItem(QListWidget* list_widget);
 	void MakeItemSlot();
-	void MakeItem( QListWidget* lstWgt );
+	void onBtnClicked();
 private:
 
     Ui::Window *ui;
